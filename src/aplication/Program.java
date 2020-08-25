@@ -40,18 +40,13 @@ public class Program {
 		System.out.print("Check-Out date (dd/MM/yyyy):");
 		checkOut = sdf.parse(sc.next());
 		
-		Date now = new Date();
 		
-		if(checkIn.before(now)|| checkOut.before(now)) {
-			System.out.println("ERROR IN RESEVATION : RESERVATION DATES FOR UPDATE MUST FUTURE DATES ");
-
+		String error= reservation.updateDates(checkIn, checkOut);//CHAMOU O METODO E ARMAZENOU SEU RETORNO NA VARIAVEL 
+		if (error != null) {
+			System.out.println("Error in reservation 1  : "+ error);
 		}
-		else if(checkIn.before(now)|| checkOut.before(now)) {
-			System.out.println("ERROR IN RESEVATION : RESERVATION DATES FOR UPDATE MUST FUTURE DATES ");
-
-		}else {
+		else {
 		
-		reservation.updateDates(checkIn, checkOut);
 		System.out.println("Reservation: "+ reservation);
 		
 		}
